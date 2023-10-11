@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TextInputGroup from '../layout/TextInputGroup';
+import { connect } from 'react-redux';
+import { addContact } from '../../actions/contactActions';
 
 class AddContact extends Component {
   state = {
@@ -36,9 +38,8 @@ class AddContact extends Component {
       phone
     };
 
-    //// SUBMIT CONTACT ////
+    this.props.addContact(newContact)
 
-    // Clear State
     this.setState({
       name: '',
       email: '',
@@ -96,4 +97,4 @@ class AddContact extends Component {
   }
 }
 
-export default AddContact;
+export default connect(null, { addContact })(AddContact);
